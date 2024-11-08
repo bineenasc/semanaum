@@ -1,0 +1,18 @@
+collection File extends aeria.file {}
+collection TempFile extends aeria.tempFile {}
+collection User extends aeria.user {
+  properties {
+    roles []enum @values([
+      "root",
+      "supervisor",
+      "customer"
+    ])
+  }
+}
+
+collection Person {
+  properties{
+    name str
+  }
+}
+
