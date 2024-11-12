@@ -9,8 +9,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AeriaButton: typeof import('@aeria-ui/ui')['AeriaButton']
     AeriaIcon: typeof import('@aeria-ui/ui')['AeriaIcon']
+    AeriaInput: typeof import('@aeria-ui/ui')['AeriaInput']
     AeriaMain: typeof import('@aeria-ui/ui')['AeriaMain']
+    AeriaSearch: typeof import('@aeria-ui/ui')['AeriaSearch']
     NoResults: typeof import('./../src/components/no-results.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

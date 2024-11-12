@@ -1,11 +1,5 @@
 import { createRouter } from 'aeria'
-
+import { searchRouter } from './search.js'
 export const router = createRouter()
-
-router.GET('/buscar', (context) => {
-
-    return{
-        name: 'pabline'
-    }
-})
+router.group('/search', searchRouter)
 

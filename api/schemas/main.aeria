@@ -10,9 +10,111 @@ collection User extends aeria.user {
   }
 }
 
-collection Person {
-  properties{
-    name str
+collection Geolocation {
+  icon "globe"
+  properties {
+    contry str
+    state str
+    district str
+    street str
+    number str
+    complement str
+    zipcode str
+  }
+  functions {
+    get @expose
+    getAll @expose
+    insert @expose
+    remove @expose
+  }
+  presets {
+    crud
+  }
+  required{
+    contry
+    state
+    district
+    street
+    number
+    zipcode
   }
 }
 
+collection Person {
+  icon "user-circle"
+  properties{
+    name str
+    document str
+    email str
+    phone str
+    type enum @values(["customer"])
+    ie str
+    address Geolocation
+  }
+  functions{
+    get @expose
+    getAll @expose
+    insert @expose
+    remove @expose
+  }
+  presets{
+    crud
+  }
+  required{
+    name
+    email
+    phone
+    type
+    document
+  }
+}
+
+collection Animal {
+  icon "dog"
+  properties {
+    name str
+    owner Person
+    age int
+    picture file
+  }
+  functions {
+    get @expose
+    getAll @expose
+    insert @expose
+    remove @expose
+  }
+  presets {
+    crud
+  }
+  required{
+    name
+    owner
+    age
+  }
+}
+
+collection Checkin {
+  icon "check"
+  properties {
+    animal Animal
+    weight str
+    temperature str
+    type enum @values(["routine", "emergency"])
+    reason str
+  }
+  functions {
+    get @expose
+    getAll @expose
+    insert @expose
+    remove @expose
+  }
+  presets {
+    crud
+  }
+  required{
+    animal
+    weight
+    type
+    reason
+  }
+}

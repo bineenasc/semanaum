@@ -1,5 +1,5 @@
-import { Collection,SchemaWithId,ExtendCollection,Context } from "aeria"
-export declare type personCollection = {description: {$id: "person",properties: {name: {type: "string"}}}}
+import { Collection,SchemaWithId,ExtendCollection,Context,get,getAll,insert,remove } from "aeria"
+export declare type personCollection = {description: {$id: "person",properties: {name: {type: "string"},document: {type: "string"},email: {type: "string"},phone: {type: "string"},type: {enum: ["customer"]},ie: {type: "string"},address: {$ref: "geolocation"}},icon: "user-circle",required: ["name","email","phone","type","document"],presets: ["crud"]},functions: {get: typeof get,getAll: typeof getAll,insert: typeof insert,remove: typeof remove},exposedFunctions: {get: true,getAll: true,insert: true,remove: true}}
 export declare const person: personCollection & {item: SchemaWithId<personCollection["description"]>}
 export declare type Person = SchemaWithId<typeof person.description>
 export declare const extendPersonCollection: <

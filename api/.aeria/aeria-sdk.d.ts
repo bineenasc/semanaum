@@ -9,6 +9,169 @@ import type {
 } from '@aeriajs/types'
 
 declare type MirrorDescriptions = {
+  "animal": {
+    "$id": "animal",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "owner": {
+        "$ref": "person",
+        "indexes": [
+          "name"
+        ]
+      },
+      "age": {
+        "type": "integer"
+      },
+      "picture": {
+        "$ref": "file",
+        "indexes": [
+          "name",
+          "link",
+          "type",
+          "size"
+        ]
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      }
+    },
+    "icon": "dog",
+    "required": [
+      "name",
+      "owner",
+      "age"
+    ],
+    "presets": [
+      "crud"
+    ],
+    "actions": {
+      "spawnAdd": {
+        "label": "action.add",
+        "event": "spawnAdd",
+        "icon": "plus",
+        "button": true,
+        "translate": true
+      }
+    },
+    "individualActions": {
+      "spawnEdit": {
+        "label": "action.edit",
+        "event": "spawnEdit",
+        "icon": "pencil-simple",
+        "translate": true
+      },
+      "viewItem": {
+        "label": "action.view",
+        "icon": "eye",
+        "translate": true,
+        "route": {
+          "name": "/dashboard/:collection/:id",
+          "setItem": true
+        }
+      },
+      "remove": {
+        "label": "action.remove",
+        "icon": "trash",
+        "ask": true,
+        "translate": true
+      }
+    }
+  },
+  "checkin": {
+    "$id": "checkin",
+    "properties": {
+      "animal": {
+        "$ref": "animal",
+        "indexes": [
+          "name"
+        ]
+      },
+      "weight": {
+        "type": "string"
+      },
+      "temperature": {
+        "type": "string"
+      },
+      "type": {
+        "enum": [
+          "routine",
+          "emergency"
+        ]
+      },
+      "reason": {
+        "type": "string"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      }
+    },
+    "icon": "check",
+    "required": [
+      "animal",
+      "weight",
+      "type",
+      "reason"
+    ],
+    "presets": [
+      "crud"
+    ],
+    "actions": {
+      "spawnAdd": {
+        "label": "action.add",
+        "event": "spawnAdd",
+        "icon": "plus",
+        "button": true,
+        "translate": true
+      }
+    },
+    "individualActions": {
+      "spawnEdit": {
+        "label": "action.edit",
+        "event": "spawnEdit",
+        "icon": "pencil-simple",
+        "translate": true
+      },
+      "viewItem": {
+        "label": "action.view",
+        "icon": "eye",
+        "translate": true,
+        "route": {
+          "name": "/dashboard/:collection/:id",
+          "setItem": true
+        }
+      },
+      "remove": {
+        "label": "action.remove",
+        "icon": "trash",
+        "ask": true,
+        "translate": true
+      }
+    }
+  },
   "file": {
     "$id": "file",
     "icon": "paperclip",
@@ -88,10 +251,28 @@ declare type MirrorDescriptions = {
       }
     }
   },
-  "person": {
-    "$id": "person",
+  "geolocation": {
+    "$id": "geolocation",
     "properties": {
-      "name": {
+      "contry": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "district": {
+        "type": "string"
+      },
+      "street": {
+        "type": "string"
+      },
+      "number": {
+        "type": "string"
+      },
+      "complement": {
+        "type": "string"
+      },
+      "zipcode": {
         "type": "string"
       },
       "created_at": {
@@ -107,6 +288,138 @@ declare type MirrorDescriptions = {
         "noForm": true,
         "readOnly": true,
         "isTimestamp": true
+      }
+    },
+    "icon": "globe",
+    "required": [
+      "contry",
+      "state",
+      "district",
+      "street",
+      "number",
+      "zipcode"
+    ],
+    "presets": [
+      "crud"
+    ],
+    "actions": {
+      "spawnAdd": {
+        "label": "action.add",
+        "event": "spawnAdd",
+        "icon": "plus",
+        "button": true,
+        "translate": true
+      }
+    },
+    "individualActions": {
+      "spawnEdit": {
+        "label": "action.edit",
+        "event": "spawnEdit",
+        "icon": "pencil-simple",
+        "translate": true
+      },
+      "viewItem": {
+        "label": "action.view",
+        "icon": "eye",
+        "translate": true,
+        "route": {
+          "name": "/dashboard/:collection/:id",
+          "setItem": true
+        }
+      },
+      "remove": {
+        "label": "action.remove",
+        "icon": "trash",
+        "ask": true,
+        "translate": true
+      }
+    }
+  },
+  "person": {
+    "$id": "person",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "document": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "type": {
+        "enum": [
+          "customer"
+        ]
+      },
+      "ie": {
+        "type": "string"
+      },
+      "address": {
+        "$ref": "geolocation",
+        "indexes": [
+          "contry"
+        ]
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      }
+    },
+    "icon": "user-circle",
+    "required": [
+      "name",
+      "email",
+      "phone",
+      "type",
+      "document"
+    ],
+    "presets": [
+      "crud"
+    ],
+    "actions": {
+      "spawnAdd": {
+        "label": "action.add",
+        "event": "spawnAdd",
+        "icon": "plus",
+        "button": true,
+        "translate": true
+      }
+    },
+    "individualActions": {
+      "spawnEdit": {
+        "label": "action.edit",
+        "event": "spawnEdit",
+        "icon": "pencil-simple",
+        "translate": true
+      },
+      "viewItem": {
+        "label": "action.view",
+        "icon": "eye",
+        "translate": true,
+        "route": {
+          "name": "/dashboard/:collection/:id",
+          "setItem": true
+        }
+      },
+      "remove": {
+        "label": "action.remove",
+        "icon": "trash",
+        "ask": true,
+        "translate": true
       }
     }
   },
@@ -343,6 +656,70 @@ declare type MirrorDescriptions = {
 
 
 declare type MirrorRouter = {
+  "/animal/get": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/animal/getAll": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/animal/insert": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/animal/remove": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/checkin/get": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/checkin/getAll": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/checkin/insert": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/checkin/remove": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
   "/file/get": {
     "POST": {
       "roles": [
@@ -375,6 +752,70 @@ declare type MirrorRouter = {
     }
   },
   "/file/removeAll": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/geolocation/get": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/geolocation/getAll": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/geolocation/insert": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/geolocation/remove": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/person/get": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/person/getAll": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/person/insert": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/person/remove": {
     "POST": {
       "roles": [
         "root"
@@ -475,8 +916,111 @@ declare type MirrorRouter = {
       ]
     }
   },
-  "/buscar": {
-    "GET": null
+  "/search/searchAnimal": {
+    "GET": {
+      "query": {
+        "type": "object",
+        "properties": {
+          "document": {
+            "type": "string"
+          }
+        }
+      },
+      "response": [
+        {
+          "type": "object",
+          "properties": {
+            "_tag": {
+              "const": "Error"
+            },
+            "result": {},
+            "error": {
+              "type": "object",
+              "required": [
+                "httpStatus",
+                "code"
+              ],
+              "properties": {
+                "httpStatus": {
+                  "enum": [
+                    403,
+                    404,
+                    400
+                  ]
+                },
+                "code": {
+                  "enum": [
+                    "RESOURCE_NOT_FOUND",
+                    "OWNERSHIP_ERROR",
+                    "INSECURE_OPERATOR",
+                    "MALFORMED_INPUT"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "object",
+                  "variable": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "_tag": {
+              "const": "Error"
+            },
+            "result": {},
+            "error": {
+              "type": "object",
+              "required": [
+                "httpStatus",
+                "code"
+              ],
+              "properties": {
+                "httpStatus": {
+                  "enum": [
+                    403
+                  ]
+                },
+                "code": {
+                  "enum": [
+                    "OWNERSHIP_ERROR",
+                    "INSECURE_OPERATOR",
+                    "INVALID_LIMIT"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "object",
+                  "variable": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "_tag": {
+              "const": "Result"
+            },
+            "error": {},
+            "result": {
+              "type": "array",
+              "items": {
+                "$ref": "checkin"
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }
 

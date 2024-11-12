@@ -5,9 +5,11 @@ definePage({
     icon: 'gauge',
   },
 })
+
 </script>
 
 <template>
   <h1>Welcome</h1>
-  <p>texto aleatorio</p>
+  <h3>procure pelo checkin do animal no botão "search"</h3>
 </template>
+

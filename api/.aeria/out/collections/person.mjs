@@ -1,3 +1,3 @@
-import { extendCollection,defineCollection } from "aeria"
-export const person = defineCollection({description: {$id: "person",properties: {name: {type: "string"}}}})
+import { extendCollection,defineCollection,get,getAll,insert,remove } from "aeria"
+export const person = defineCollection({description: {$id: "person",properties: {name: {type: "string"},document: {type: "string"},email: {type: "string"},phone: {type: "string"},type: {enum: ["customer"]},ie: {type: "string"},address: {$ref: "geolocation"}},icon: "user-circle",required: ["name","email","phone","type","document"],presets: ["crud"]},functions: {get,getAll,insert,remove},exposedFunctions: {get: true,getAll: true,insert: true,remove: true}})
 export const extendPersonCollection = (collection) => extendCollection(person,collection)
