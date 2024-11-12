@@ -12,7 +12,7 @@ searchRouter.GET('/searchAnimal', async(context)=>{
     return Result.error(personError)
   }
 
-  const { error: animalError, result: animal } = await context.collections.animal.functions.get({
+  const { error: animalError, result: animal } = await context.collections.animal.functions.getAll({
     filters: {
       owner: person._id,
     },
@@ -23,7 +23,9 @@ searchRouter.GET('/searchAnimal', async(context)=>{
 
   const { error: checkinError, result: checkin } = await context.collections.checkin.functions.getAll({
     filters: {
-      animal: animal._id,
+      animal: {
+        $in: animal.map((animal) => animal._id),
+      },
     },
   })
   if (checkinError){
