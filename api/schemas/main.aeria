@@ -75,14 +75,16 @@ collection Animal {
     name str
     owner Person
     age int
-    picture file
+    picture File @accept(["image/*"])
   }
   functions {
     get @expose
     getAll @expose
     insert @expose
     remove @expose
+    upload @expose(["root"]) 
   }
+
   presets {
     crud
   }
@@ -90,6 +92,12 @@ collection Animal {
     name
     owner
     age
+  }
+  individualActions{
+    profile {
+      label "Profile"
+      icon "user"
+    }
   }
 }
 

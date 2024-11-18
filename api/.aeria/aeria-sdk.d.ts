@@ -26,6 +26,9 @@ declare type MirrorDescriptions = {
       },
       "picture": {
         "$ref": "file",
+        "accept": [
+          "image/*"
+        ],
         "indexes": [
           "name",
           "link",
@@ -57,16 +60,11 @@ declare type MirrorDescriptions = {
     "presets": [
       "crud"
     ],
-    "actions": {
-      "spawnAdd": {
-        "label": "action.add",
-        "event": "spawnAdd",
-        "icon": "plus",
-        "button": true,
-        "translate": true
-      }
-    },
     "individualActions": {
+      "profile": {
+        "label": "Profile",
+        "icon": "user"
+      },
       "spawnEdit": {
         "label": "action.edit",
         "event": "spawnEdit",
@@ -86,6 +84,15 @@ declare type MirrorDescriptions = {
         "label": "action.remove",
         "icon": "trash",
         "ask": true,
+        "translate": true
+      }
+    },
+    "actions": {
+      "spawnAdd": {
+        "label": "action.add",
+        "event": "spawnAdd",
+        "icon": "plus",
+        "button": true,
         "translate": true
       }
     }
@@ -681,6 +688,14 @@ declare type MirrorRouter = {
     }
   },
   "/animal/remove": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/animal/upload": {
     "POST": {
       "roles": [
         "root"
