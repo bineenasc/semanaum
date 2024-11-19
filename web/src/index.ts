@@ -2,12 +2,16 @@ import { useApp, defineOptions } from 'aeria-ui'
 import aeriaEn from '@aeria-ui/i18n-en'
 import { en } from './i18n/index.js'
 import { routes } from './routes.js'
+import * as stores from './stores'
 import Main from './main.vue'
 import NoResults from './components/no-results.vue'
 
 const options = defineOptions({
   component: Main,
   routes,
+  setup: ({ context, router }) => {
+    Object.values(stores).map((registerStore) => registerStore(router)(context))
+  },
   i18n: {
     current: 'en',
     locales: {
