@@ -26,16 +26,30 @@ watchEffect(async()=>{
 
 <template>
   <nav class="navbar">
-    <img src="/logo.png" alt="Company Logo" class="logo" />
+    <img
+      src="/logo.png"
+      alt="Company Logo"
+      class="logo"
+    >
     <h1>Checkin Search</h1>
   </nav>
   <div class="container">
     <h2>Welcome</h2>
     <h3>Look for your pet's check-in below</h3>
-    <aeria-input v-model="document" :property="{ type: 'string', mask: '###.###.###-##' }"/>
+    <aeria-input
+      v-model="document"
+      :property="{ type: 'string', mask: '###.###.###-##' }"
+    />
     <i>Your CPF is: {{ document }}</i>
-    <div v-if="checkins.length" class="checkins-container">
-      <div v-for="checkin in checkins" :key="checkin._id" class="checkin-entry">
+    <div
+      v-if="checkins.length"
+      class="checkins-container"
+    >
+      <div
+        v-for="checkin in checkins"
+        :key="checkin._id"
+        class="checkin-entry"
+      >
         <p>Check-in feito em {{ formatDateTime(checkin.created_at) }}</p>
         <p>Animal: {{ checkin.animal.name }}</p>
         <p>Peso: {{ checkin.weight }}kg</p>

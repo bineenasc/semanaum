@@ -1,5 +1,5 @@
-import { registerStore, createCollectionStore } from "aeria-ui";
-import { Router } from "vue-router";
+import { registerStore, createCollectionStore } from 'aeria-ui'
+import { type Router } from 'vue-router'
 
 export const animal = (router: Router) => registerStore((manager) => createCollectionStore({
   $id: 'animal',
@@ -9,8 +9,8 @@ export const animal = (router: Router) => registerStore((manager) => createColle
         name: '/dashboard/pet-[id]',
         params: {
           id: filters._id,
-        }
+        },
       })
-    }
-  })
+    },
+  }),
 }, manager))
