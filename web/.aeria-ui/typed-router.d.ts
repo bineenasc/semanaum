@@ -21,6 +21,7 @@ declare module 'vue-router/auto-routes' {
     '/dashboard': RouteRecordInfo<'/dashboard', '/dashboard', Record<never, never>, Record<never, never>>,
     '/dashboard/': RouteRecordInfo<'/dashboard/', '/dashboard', Record<never, never>, Record<never, never>>,
     '/dashboard/pet': RouteRecordInfo<'/dashboard/pet', '/dashboard/pet', Record<never, never>, Record<never, never>>,
+    '/dashboard/pet-[id]': RouteRecordInfo<'/dashboard/pet-[id]', '/dashboard/pet-:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/search': RouteRecordInfo<'/search', '/search', Record<never, never>, Record<never, never>>,
     '/search/': RouteRecordInfo<'/search/', '/search', Record<never, never>, Record<never, never>>,
   }

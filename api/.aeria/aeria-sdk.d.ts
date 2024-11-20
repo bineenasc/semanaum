@@ -976,7 +976,7 @@ declare type MirrorRouter = {
                 },
                 "details": {
                   "type": "object",
-                  "variable": true
+                  "additionalProperties": true
                 }
               }
             }
@@ -1013,7 +1013,7 @@ declare type MirrorRouter = {
                 },
                 "details": {
                   "type": "object",
-                  "variable": true
+                  "additionalProperties": true
                 }
               }
             }
