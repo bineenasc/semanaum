@@ -26,7 +26,7 @@ watchEffect(async()=>{
 
 <template>
   <nav class="navbar">
-    <img src="../../../static/logo.png" alt="Company Logo" class="logo" />
+    <img src="/logo.png" alt="Company Logo" class="logo" />
     <h1>Checkin Search</h1>
   </nav>
   <div class="container">
