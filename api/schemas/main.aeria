@@ -126,3 +126,31 @@ collection Checkin {
     reason
   }
 }
+
+ collection Transaction {
+   icon "currency-dollar"
+   properties {
+     type enum @values(["credit", "debit"])
+     description str
+     value num
+     invoice str
+     paid bool
+   }
+   functions {
+     get @expose
+     getAll @expose
+     insert @expose
+     remove @expose
+   }
+   table {
+    type
+    description
+    value
+    invoice
+    paid
+    created_at
+  }
+   presets {
+     crud
+   }
+ }

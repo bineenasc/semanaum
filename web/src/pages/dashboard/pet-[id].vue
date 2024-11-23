@@ -70,7 +70,7 @@ onMounted(async () => {
         <p><strong>Idade:</strong> {{ animal.age }}</p>
         <p><strong>Proprietário:</strong> {{ animal.owner.name }}</p>
         <p><strong>Email:</strong> {{ animal.owner.email }}</p>
-        <p><strong>Data de Criação:</strong> {{ animal.created_at }}</p>
+        <p><strong>Data de Criação:</strong> {{ formatDateTime(animal.created_at) }}</p>
       </div>
       <template #footer>
         <aeria-button

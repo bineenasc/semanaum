@@ -1,5 +1,6 @@
 import { createRouter, functionSchemas, Result, resultSchema } from 'aeria'
 export const searchRouter = createRouter()
+
 searchRouter.GET('/searchAnimal', async(context)=>{
   const query = context.request.query
 

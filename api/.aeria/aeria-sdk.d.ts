@@ -470,6 +470,87 @@ declare type MirrorDescriptions = {
       }
     }
   },
+  "transaction": {
+    "$id": "transaction",
+    "properties": {
+      "type": {
+        "enum": [
+          "credit",
+          "debit"
+        ]
+      },
+      "description": {
+        "type": "string"
+      },
+      "value": {
+        "type": "number"
+      },
+      "invoice": {
+        "type": "string"
+      },
+      "paid": {
+        "type": "boolean"
+      },
+      "created_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "date-time",
+        "noForm": true,
+        "readOnly": true,
+        "isTimestamp": true
+      }
+    },
+    "icon": "currency-dollar",
+    "table": [
+      "type",
+      "description",
+      "value",
+      "invoice",
+      "paid",
+      "created_at"
+    ],
+    "presets": [
+      "crud"
+    ],
+    "actions": {
+      "spawnAdd": {
+        "label": "action.add",
+        "event": "spawnAdd",
+        "icon": "plus",
+        "button": true,
+        "translate": true
+      }
+    },
+    "individualActions": {
+      "spawnEdit": {
+        "label": "action.edit",
+        "event": "spawnEdit",
+        "icon": "pencil-simple",
+        "translate": true
+      },
+      "viewItem": {
+        "label": "action.view",
+        "icon": "eye",
+        "translate": true,
+        "route": {
+          "name": "/dashboard/:collection/:id",
+          "setItem": true
+        }
+      },
+      "remove": {
+        "label": "action.remove",
+        "icon": "trash",
+        "ask": true,
+        "translate": true
+      }
+    }
+  },
   "user": {
     "$id": "user",
     "icon": "users",
@@ -838,6 +919,38 @@ declare type MirrorRouter = {
       "builtin": true
     }
   },
+  "/transaction/get": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/transaction/getAll": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/transaction/insert": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
+  "/transaction/remove": {
+    "POST": {
+      "roles": [
+        "root"
+      ],
+      "builtin": true
+    }
+  },
   "/user/get": {
     "POST": {
       "roles": [
@@ -1030,6 +1143,70 @@ declare type MirrorRouter = {
               "type": "array",
               "items": {
                 "$ref": "checkin"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "/transaction/balance": {
+    "GET": {
+      "response": [
+        {
+          "type": "object",
+          "properties": {
+            "_tag": {
+              "const": "Error"
+            },
+            "result": {},
+            "error": {
+              "type": "object",
+              "required": [
+                "httpStatus",
+                "code"
+              ],
+              "properties": {
+                "httpStatus": {
+                  "enum": [
+                    500
+                  ]
+                },
+                "code": {
+                  "enum": [
+                    "AGGREGATION_FAILED"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "details": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "_tag": {
+              "const": "Result"
+            },
+            "error": {},
+            "result": {
+              "type": "object",
+              "properties": {
+                "totalCreditNotPaid": {
+                  "type": "number"
+                },
+                "totalDebitNotPaid": {
+                  "type": "number"
+                },
+                "balance": {
+                  "type": "number"
+                }
               }
             }
           }
