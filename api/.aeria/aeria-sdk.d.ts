@@ -367,9 +367,7 @@ declare type MirrorDescriptions = {
       },
       "address": {
         "$ref": "geolocation",
-        "indexes": [
-          "contry"
-        ]
+        "inline": true
       },
       "created_at": {
         "type": "string",
@@ -485,9 +483,6 @@ declare type MirrorDescriptions = {
       "value": {
         "type": "number"
       },
-      "invoice": {
-        "type": "string"
-      },
       "paid": {
         "type": "boolean"
       },
@@ -511,7 +506,6 @@ declare type MirrorDescriptions = {
       "type",
       "description",
       "value",
-      "invoice",
       "paid",
       "created_at"
     ],

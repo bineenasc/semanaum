@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     AeriaPanel: typeof import('@aeria-ui/ui')['AeriaPanel']
     AeriaPicture: typeof import('@aeria-ui/ui')['AeriaPicture']
     AeriaSearch: typeof import('@aeria-ui/ui')['AeriaSearch']
+    AeriaSurface: typeof import('@aeria-ui/ui')['AeriaSurface']
     NoResults: typeof import('./../src/components/no-results.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

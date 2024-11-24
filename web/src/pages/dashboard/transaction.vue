@@ -1,10 +1,3 @@
-<route lang="yaml">
-  meta:
-    title: Transaction
-    icon: currency-dollar
-    collection: transaction
-  </route>
-
 <script setup lang="ts">
 definePage({
   meta: {
@@ -12,7 +5,7 @@ definePage({
     icon: 'currency-dollar',
   },
 })
-//const metaStore = useStore('meta') - dark mode
+//const metaStore = useStore('meta')
 
 const financialData = ref<FinancialData>({
   balance: 0,
@@ -39,12 +32,11 @@ onMounted(async () =>{
     class="
       tw-grid
       tw-mb-4
+      tw-gap-4
       tw-pb-10
       tw-px-8
       tw-rounded-3xl
       tw-bg-gray-100
-      tw-border-4
-      tw-border-blue-400
     "
   >
     <div
@@ -86,7 +78,6 @@ onMounted(async () =>{
           class="
             tw-grid
             tw-grid-cols-1
-            tw-mb-4
             tw-gap-6
             tw-mt-5
 
@@ -150,18 +141,14 @@ onMounted(async () =>{
                       tw-font-bold
                       tw-leading-8
                     "
-                  >
-                    R$ {{ financialData.balance }}
-                  </div>
+                  >R$ {{ financialData.balance }}</div>
                   <div
                     class="
                       tw-mt-1
                       tw-text-base
                       tw-text-gray-600
                     "
-                  >
-                    Saldo
-                  </div>
+                  >Saldo</div>
                 </div>
               </div>
             </div>
@@ -222,23 +209,20 @@ onMounted(async () =>{
                       tw-font-bold
                       tw-leading-8
                     "
-                  >
-                    R$ {{ financialData.totalDebitNotPaid }}
-                  </div>
+                  >R$ {{ financialData.totalDebitNotPaid }}</div>
                   <div
                     class="
                       tw-mt-1
                       tw-text-base
                       tw-text-gray-600
                     "
-                  >
-                    A pagar
-                  </div>
+                  >A pagar</div>
                 </div>
               </div>
             </div>
           </a>
-          <!-- cartão 3 -->
+
+          <!-- Cartão 3 -->
           <a
             class="
               tw-transform
@@ -293,18 +277,14 @@ onMounted(async () =>{
                       tw-font-bold
                       tw-leading-8
                     "
-                  >
-                    R$ {{ financialData.totalCreditNotPaid }}
-                  </div>
+                  >R$ {{ financialData.totalCreditNotPaid }}</div>
                   <div
                     class="
                       tw-mt-1
                       tw-text-base
                       tw-text-gray-600
                     "
-                  >
-                    A receber
-                  </div>
+                  >A receber</div>
                 </div>
               </div>
             </div>
@@ -312,6 +292,7 @@ onMounted(async () =>{
         </div>
       </div>
     </div>
+
     <aeria-crud
       collection="transaction"
       class="
@@ -324,22 +305,3 @@ onMounted(async () =>{
     </aeria-crud>
   </div>
 </template>
-
-<style scoped>
-
-.financial-summary {
-  background-color: #f1f1f1;
-  padding: 10rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-
-.financial-summary.dark-mode{
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-.financial-summary p {
-  margin: 0.2rem 0;
-}
-</style>

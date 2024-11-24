@@ -49,7 +49,7 @@ collection Person {
     phone str
     type enum @values(["customer"])
     ie str
-    address Geolocation
+    address Geolocation @inline
   }
   functions{
     get @expose
@@ -133,7 +133,6 @@ collection Checkin {
      type enum @values(["credit", "debit"])
      description str
      value num
-     invoice str
      paid bool
    }
    functions {
@@ -146,7 +145,6 @@ collection Checkin {
     type
     description
     value
-    invoice
     paid
     created_at
   }
