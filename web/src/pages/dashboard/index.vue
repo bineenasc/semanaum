@@ -5,6 +5,9 @@ definePage({
     icon: 'gauge',
   },
 })
+function goTo(){
+  window.open('http://localhost:8080/search')
+}
 
 </script>
 
@@ -16,7 +19,6 @@ definePage({
       tw-pb-4
       tw-px-10
       tw-rounded-3xl
-
     "
   >
     <div
@@ -32,10 +34,6 @@ definePage({
           tw-mt-8
         "
       >
-        <!-- Título -->
-        <!-- <div class="tw-flex tw-items-center tw-h-10 tw-intro-y">
-        <h2 class="tw-mr-5 tw-text-lg tw-font-medium tw-truncate">Resumo Financeiro</h2>
-      </div> -->
 
         <!-- Cartões -->
         <div
@@ -85,8 +83,9 @@ definePage({
                       tw-mt-5
                       tw-text-base
                     "
-                  >Veja os chekins do seu pet pelo botão "search" na aba superior ao lado do seu perfil de usuário.</div>
+                  >Veja os chekins do seu pet pelo botão "search" abaixo.</div>
                 </div>
+                <aeria-button type="button" @click="goTo()" class="tw-mt-5">Search</aeria-button>
               </div>
             </div>
           </a>
